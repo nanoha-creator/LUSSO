@@ -1,0 +1,23 @@
+// ------------------------------------------------
+//    ファイル名：_variables.scss
+//    機能：変数を記述する
+// --------------------------------------------------
+// 色
+$color-white: #fff;
+$color-black: #000;
+
+// フォントの太さ
+$fontweight-thin: 100;
+$fontweight-light: 300;
+$fontweight-regular: 400;
+$fontweight-medium: 500;
+$fontweight-bold: 700;
+$fontweight-extrabold: 800;
+$fontweight-black: 900;
+
+// ブレークポイント
+$breakpoints: (
+  lg: 1440px,
+  sm: 768px,
+  // PC幅→スマホ幅へ切り替える幅
+) !default;

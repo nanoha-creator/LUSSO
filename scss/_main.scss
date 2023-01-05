@@ -1,0 +1,73 @@
+@use "mixin" as m;
+
+// ------------------------------------------------
+//  ファイル名：_main.scss
+//  機能：webページ全体のスタイルを記述する
+// ------------------------------------------------
+
+// ----------------------
+//  レイアウト
+// ----------------------
+.ly_wrapper {
+  overflow-x: hidden;
+}
+
+// ヘッダー
+.ly_header {
+  width: 100vw;
+}
+
+// コンテンツ
+.ly_cont {
+  width: 100%;
+  max-width: 1230px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 0 auto;
+}
+
+// フッター
+.ly_footer {
+  width: 100%;
+}
+
+.ly_footer_inner {
+  width: 100%;
+  max-width: 1230px;
+  height: 79px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 0 auto;
+}
+
+// ----------------------
+//  ヘッダー
+// ----------------------
+
+.bl_headerNav_list {
+  display: flex;
+  flex: 1;
+}
+
+// ----------------------
+//  フッター
+// ----------------------
+
+// ----------------------
+//  共通パーツ
+// ----------------------
+.el_beforeIconBtn {
+  // 文字
+  color: v.$color-white;
+
+  &::before {
+    display: inline-block;
+    content: "\f0c0";
+    font-weight: v.$fontweight-regular;
+    font-family: "Font Awesome 6 Free";
+  }
+}
+
+// ----------------------
+//  ヘルパー
+// ----------------------

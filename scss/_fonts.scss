@@ -1,0 +1,13 @@
+@use "variables" as v;
+
+// ------------------------------------------------
+//  ファイル名：_fonts.scss
+//  機能：フォントのスタイルを記述する
+// ------------------------------------------------
+// NotoSansJP Regular
+// @font-face {
+//   font-family: NotoSansJP;
+//   font-style: normal;
+//   font-weight: map-get(v.$fontweights, regular);
+//   src: url("../fonts/NotoSansJP-Regular.otf") format("opentype");
+// }

@@ -1,0 +1,250 @@
+@use "variables" as v;
+
+// ------------------------------------------------
+//  ファイル名：_mixin.scss
+//  機能：mixinを記述する
+// ------------------------------------------------
+// ----------
+// 数値から単位を除去する
+// ----------
+@function strip-unit($value) {
+  @if type-of($value) == "number" and not unitless($value) {
+    @return $value / ($value * 0 + 1);
+  }
+  @return $value;
+}
+
+// ----------
+// viewport-scaleで設定する値を計算する
+// ----------
+@function viewport-scale-value($min-breakpoint, $min-value, $max-breakpoint, $max-value, $vp-unit) {
+  $u01: unit(map-get(v.$breakpoints, $min-breakpoint));
+  $u02: unit($min-value);
+  $u03: unit(map-get(v.$breakpoints, $max-breakpoint));
+  $u04: unit($max-value);
+  $a: strip-unit(map-get(v.$breakpoints, $min-breakpoint));
+  $b: strip-unit($min-value);
+  $c: strip-unit(map-get(v.$breakpoints, $max-breakpoint));
+  $d: strip-unit($max-value);
+
+  // $min-valueと$max-valueが一致している場合は、そのまま返す
+  @if $min-value == $max-value {
+    @return $min-value;
+  }
+
+  // 単位が一致していることが前提
+  @if $u01 == $u03 and $u02 == $u04 {
+    $x: (($d - $b) / ($c - $a) * 100) + #{$vp-unit};
+    $y: (($c * $b - $a * $d) / ($c - $a)) + #{$u02};
+
+    @if $y == 0 {
+      // プロパティ値が小さい数値→大きい数値への変動の場合
+      @if $min-value < $max-value {
+        @return max($x, $min-value);
+      }
+
+      // プロパティ値が大きい数値→小さい数値への変動の場合
+      @else {
+        @return min($x, $min-value);
+      }
+    } @else {
+      // プロパティ値が小さい数値→大きい数値への変動の場合
+      @if $min-value < $max-value {
+        @return max(calc(#{$x} + #{$y}), $min-value);
+      }
+
+      // プロパティ値が大きい数値→小さい数値への変動の場合
+      @else {
+        @return min(calc(#{$x} + #{$y}), $min-value);
+      }
+    }
+  }
+  @return 0;
+}
+
+// ----------
+// 画面幅の変動に応じて、プロパティの値を変動させる
+// ----------
+// $property: 設定したいプロパティ
+// $min-vp: 変動前の画面幅
+// $min-value: 変動前のプロパティ値
+// $max-vp: 変動後の画面幅
+// max-value: 変動後のプロパティ値
+// $vp-unit: 単位
+// ----------
+@mixin viewport-scale($property, $min-breakpoint: sm, $min-value, $max-breakpoint: md, $max-value, $vp-unit: "vw") {
+  // $min-valueの個数と$max-valueの個数が一致していることが前提
+  @if length($min-value) == length($max-value) {
+    // プロパティ値が1つの場合
+    @if length($min-value) == 1 {
+      #{$property}: viewport-scale-value($min-breakpoint, $min-value, $max-breakpoint, $max-value, $vp-unit);
+    }
+
+    // プロパティ値が2つの場合（margin/paddingを想定）
+    @else if length($min-value) == 2 {
+      #{$property}-top: viewport-scale-value(
+        $min-breakpoint,
+        nth($min-value, 1),
+        $max-breakpoint,
+        nth($max-value, 1),
+        $vp-unit
+      );
+      #{$property}-right: viewport-scale-value(
+        $min-breakpoint,
+        nth($min-value, 2),
+        $max-breakpoint,
+        nth($max-value, 2),
+        $vp-unit
+      );
+      #{$property}-bottom: viewport-scale-value(
+        $min-breakpoint,
+        nth($min-value, 1),
+        $max-breakpoint,
+        nth($max-value, 1),
+        $vp-unit
+      );
+      #{$property}-left: viewport-scale-value(
+        $min-breakpoint,
+        nth($min-value, 2),
+        $max-breakpoint,
+        nth($max-value, 2),
+        $vp-unit
+      );
+    }
+
+    // プロパティ値が3つの場合（margin/paddingを想定）
+    @else if length($min-value) == 3 {
+      #{$property}-top: viewport-scale-value(
+        $min-breakpoint,
+        nth($min-value, 1),
+        $max-breakpoint,
+        nth($max-value, 1),
+        $vp-unit
+      );
+      #{$property}-right: viewport-scale-value(
+        $min-breakpoint,
+        nth($min-value, 2),
+        $max-breakpoint,
+        nth($max-value, 2),
+        $vp-unit
+      );
+      #{$property}-bottom: viewport-scale-value(
+        $min-breakpoint,
+        nth($min-value, 2),
+        $max-breakpoint,
+        nth($max-value, 2),
+        $vp-unit
+      );
+      #{$property}-left: viewport-scale-value(
+        $min-breakpoint,
+        nth($min-value, 3),
+        $max-breakpoint,
+        nth($max-value, 3),
+        $vp-unit
+      );
+    }
+
+    // プロパティ値が4つの場合（margin/paddingを想定）
+    @else if length($min-value) == 4 {
+      #{$property}-top: viewport-scale-value(
+        $min-breakpoint,
+        nth($min-value, 1),
+        $max-breakpoint,
+        nth($max-value, 1),
+        $vp-unit
+      );
+      #{$property}-right: viewport-scale-value(
+        $min-breakpoint,
+        nth($min-value, 2),
+        $max-breakpoint,
+        nth($max-value, 2),
+        $vp-unit
+      );
+      #{$property}-bottom: viewport-scale-value(
+        $min-breakpoint,
+        nth($min-value, 3),
+        $max-breakpoint,
+        nth($max-value, 3),
+        $vp-unit
+      );
+      #{$property}-left: viewport-scale-value(
+        $min-breakpoint,
+        nth($min-value, 4),
+        $max-breakpoint,
+        nth($max-value, 4),
+        $vp-unit
+      );
+    }
+  }
+}
+
+// ----------
+//  スマホ幅用メディアクエリを定義する（PC幅が基準）
+// ----------
+@mixin sp() {
+  @media screen and (max-width: map-get(v.$breakpoints, sm)) {
+    @content;
+  }
+}
+
+// ----------
+//  line-heightを調節する（XDとwebで仕様が異なるため）
+// ----------
+//  $line-height: line-heightの指定値
+// ----------
+@mixin line-height-adjustment($lineHeight) {
+  line-height: $lineHeight;
+  display: inline-block;
+
+  &::before {
+    display: block;
+    content: "";
+    width: 0;
+    height: 0;
+    margin-top: calc((1 - #{$lineHeight}) * 0.5em);
+  }
+
+  &::after {
+    display: block;
+    content: "";
+    width: 0;
+    height: 0;
+    margin-bottom: calc((1 - #{$lineHeight}) * 0.5em);
+  }
+}
+
+// ----------
+//  行間を調節する（XDとwebで仕様が異なるため）
+//  line-height-adjustment()でもずれる場合に固定値で調整
+//  行間を減らしたい場合に使用する
+//  行間を増やしたい場合はline-height-inc()を使用する
+// ----------
+//  $value: 調整値
+// ----------
+@mixin line-height-dec($value-top, $value-bottom) {
+  &::before {
+    margin-top: $value-top;
+  }
+
+  &::after {
+    margin-bottom: $value-bottom;
+  }
+}
+
+// ----------
+//  行間を調節する（XDとwebで仕様が異なるため）
+//  line-height-adjustment()でもずれる場合に固定値で調整
+//  行間を増やすしたい場合に使用する
+//  行間を減らしたい場合はline-height-dec()を使用する
+// ----------
+//  $value: 調整値
+// ----------
+@mixin line-height-inc($value-top, $value-bottom) {
+  &::before {
+    padding-top: $value-top;
+  }
+
+  &::after {
+    padding-bottom: $value-bottom;
+  }
+}

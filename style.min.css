@@ -1,0 +1,2 @@
+body::before{font-family:"Source Code Pro","SF Mono",Monaco,Inconsolata,"Fira Mono","Droid Sans Mono",monospace,monospace;white-space:pre;display:block;padding:1em;margin-bottom:1em;border-bottom:2px solid #000;content:'Error: There is no module with the namespace "v".\a    \2577 \a 61 \2502    color: v.$color-white;\a    \2502           ^^^^^^^^^^^^^^\a    \2575 \a   scss\\_main.scss 61:10  @use\a   scss\\style.scss 7:1    root stylesheet'}
+/*# sourceMappingURL=style.min.css.map */
