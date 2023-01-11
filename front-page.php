@@ -18,14 +18,15 @@
     <main>
     </main>
 
+    <!-- CTA共通パーツ -->
+    <?php get_template_part('includes/cta') ?>
+
     <footer>
       <div class="ly_footer">
-        <div class="ly_footer_inner">
 
-          <!-- フッター共通パーツ -->
-          <?php get_template_part('includes/footer') ?>
+        <!-- フッター共通パーツ -->
+        <?php get_template_part('includes/footer') ?>
 
-        </div>
     </footer>
 
   </div>

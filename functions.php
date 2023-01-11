@@ -10,4 +10,5 @@ add_action('wp_enqueue_scripts', function () {
     // js読み込み
     wp_deregister_script('jquery'); // デフォルトのjqueryを削除
     wp_enqueue_script('jquery', get_theme_file_uri('/js/jquery-3.6.1.min.js'), array(), '3.6.1', true);
+    wp_enqueue_script('img-adjustment', get_theme_file_uri('/js/img_adjustment.js'), array('jquery'), false, true);
 });

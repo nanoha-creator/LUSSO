@@ -5,9 +5,33 @@
 //  機能：フォントのスタイルを記述する
 // ------------------------------------------------
 // NotoSansJP Regular
-// @font-face {
-//   font-family: NotoSansJP;
-//   font-style: normal;
-//   font-weight: map-get(v.$fontweights, regular);
-//   src: url("../fonts/NotoSansJP-Regular.otf") format("opentype");
-// }
+@font-face {
+  font-family: "Noto Sans JP";
+  font-style: normal;
+  font-weight: v.$fontweight-regular;
+  src: url("../fonts/NotoSansJP-Regular.otf") format("opentype");
+}
+
+// NotoSansJP Bold
+@font-face {
+  font-family: "Noto Sans JP";
+  font-style: normal;
+  font-weight: v.$fontweight-bold;
+  src: url("../fonts/NotoSansJP-Bold.otf") format("opentype");
+}
+
+// Roboto Regular
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: v.$fontweight-regular;
+  src: url("../fonts/Roboto-Regular.ttf") format("truetype");
+}
+
+// Roboto Medium
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: v.$fontweight-medium;
+  src: url("../fonts/Roboto-Medium.ttf") format("truetype");
+}

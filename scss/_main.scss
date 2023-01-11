@@ -1,4 +1,5 @@
 @use "mixin" as m;
+@use "variables" as v;
 
 // ------------------------------------------------
 //  ファイル名：_main.scss
@@ -15,6 +16,10 @@
 // ヘッダー
 .ly_header {
   width: 100vw;
+
+  // ロゴとナビげージョンを横並びにする（画面いっぱいに離す）
+  display: flex;
+  justify-content: space-between;
 }
 
 // コンテンツ
@@ -29,45 +34,213 @@
 // フッター
 .ly_footer {
   width: 100%;
-}
 
-.ly_footer_inner {
-  width: 100%;
-  max-width: 1230px;
-  height: 79px;
-  padding-left: 15px;
-  padding-right: 15px;
-  margin: 0 auto;
+  // 背景色
+  background-color: v.$color-blue2;
 }
 
 // ----------------------
-//  ヘッダー
+//  ヘッダーナビゲーション
 // ----------------------
+.el_siteLogo {
+  display: inline-block;
+}
+
+.bl_headerNav {
+  display: flex;
+  height: 80px;
+}
 
 .bl_headerNav_list {
   display: flex;
+  list-style: none;
+
+  // 右揃え
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.bl_headerNav_list > li {
+  // 上下左右中央揃え
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:not(:first-child) {
+    margin-right: 20px;
+  }
+}
+
+.bl_headerNav_link {
+  display: inline-block;
+
+  // 文字
+  text-decoration: none;
+  color: v.$color-black;
+  font-weight: v.$fontweight-medium;
+
+  // クリック可能領域を広げる
+  padding: 15px;
+
+  // モディファイア：CONTACT
+  &.bl_headerNav_link__contact {
+    // 文字
+    text-align: center;
+    color: v.$color-white;
+
+    // リンクを上下左右中央揃えにする
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    // サイズ
+    width: 187px;
+  }
+}
+
+.bl_headerNav_contact {
+  height: inherit;
+  background-color: v.$color-blue1;
+}
+
+// ----------------------
+//  CTAエリア
+// ----------------------
+.bl_cta {
+  // 画像とボタン類を横並び
+  display: flex;
+
+  // 配置
+  .bl_cta_txt {
+    margin-bottom: 32px;
+  }
+
+  .el_btn {
+    margin-bottom: 20px;
+  }
+}
+
+.bl_cta_imgWrapper {
+  // 画像の基準位置
+  position: relative;
+
+  // サイズ
+  width: 56.944444%;
+  min-height: 446px;
+
+  // 表示したくない部分を隠す
+  overflow: hidden;
+
+  // 余白をなくす
+  margin: 0;
+
+  img {
+    // 上下左右中央揃え
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    // サイズ
+    width: 100%;
+  }
+}
+
+.bl_cta_body {
+  display: flex;
+  flex-direction: column;
+
+  // 背景色
+  background-color: v.$color-blue1;
+
+  // 画像エリア以外にいっぱい広げる
   flex: 1;
+
+  // 余白
+  padding: 78px 0 84px 175px;
+}
+
+.bl_cta_txt {
+  // 文字
+  color: v.$color-white;
+  font-size: 1.125rem;
+  @include m.line-height-adjustment(1.666666);
+}
+
+.bl_cta_time {
+  // 文字
+  color: v.$color-white;
+  font-size: 0.875rem;
+  @include m.line-height-adjustment(2.142857);
 }
 
 // ----------------------
 //  フッター
 // ----------------------
+.bl_footer {
+  display: flex;
+}
+
+// ----------------------
+//  フッターナビげージョン
+// ----------------------
+.bl_footerNav_link {
+  color: v.$color-white;
+}
 
 // ----------------------
 //  共通パーツ
 // ----------------------
-.el_beforeIconBtn {
-  // 文字
-  color: v.$color-white;
+.el_btn {
+  display: inline-block;
 
+  // 文字
+  text-decoration: none;
+  text-align: center;
+  color: v.$color-white;
+  background-color: v.$color-blue1;
+  white-space: nowrap;
+
+  // ボーダー
+  border: 1px solid v.$color-white;
+  border-radius: 4px;
+
+  // サイズ・余白
+  width: 235px;
+  min-height: 68px;
+  padding: 18px 0;
+}
+
+// アイコン
+.el_beforeIcon {
   &::before {
+    // 文字との余白
+    margin-right: 10px;
+
+    // アイコン
     display: inline-block;
-    content: "\f0c0";
-    font-weight: v.$fontweight-regular;
+    content: attr(data-fa);
     font-family: "Font Awesome 6 Free";
+    font-weight: v.$fontweight-regular;
+    font-size: 1.1rem;
+  }
+
+  // モディファイア：文字との余白を16pxにする
+  &.el_beforeIcon__mr16::before {
+    margin-right: 16px;
+  }
+
+  // モディファイア：フォントの太さをblackにする
+  &.el_beforeIcon__fwBlack::before {
+    font-weight: v.$fontweight-black;
   }
 }
 
 // ----------------------
 //  ヘルパー
 // ----------------------
+// 背景色が青
+.hp_bgBlue {
+  background-color: v.$color-blue1;
+}

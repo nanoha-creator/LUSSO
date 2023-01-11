@@ -15,7 +15,7 @@ module.exports = {
       true,
       {
         // FontAwesomeの指定で発生するエラーを出さない
-        ignoreFontFamilies: "FontAwesome",
+        ignoreFontFamilies: "Font Awesome 6 Free",
       },
     ],
   },
