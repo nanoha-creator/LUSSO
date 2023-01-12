@@ -1,4 +1,6 @@
-<h1 class="el_siteLogo"><a href="<?php echo esc_url(home_url('/')); ?>"><img src="<?php echo esc_url(get_theme_file_uri('/img/logo.svg')) ?>" alt="LUSSO Automobile"></a></h1>
+<h1 class="el_siteLogo"><a href="<?php echo esc_url(home_url("/")); ?>"><img src="<?php echo esc_url(
+    get_theme_file_uri("/img/logo.svg")
+); ?>" alt="LUSSO Automobile"></a></h1>
 <nav class="bl_headerNav">
     <ul class="bl_headerNav_list">
 

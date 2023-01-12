@@ -1,5 +1,5 @@
-@use "mixin" as m;
-@use "variables" as v;
+@use "./mixin" as *;
+@use "./variables" as *;
 
 // ------------------------------------------------
 //  ファイル名：_main.scss
@@ -36,7 +36,7 @@
   width: 100%;
 
   // 背景色
-  background-color: v.$color-blue2;
+  background-color: $color-blue2;
 }
 
 // ----------------------
@@ -76,8 +76,8 @@
 
   // 文字
   text-decoration: none;
-  color: v.$color-black;
-  font-weight: v.$fontweight-medium;
+  color: $color-black;
+  font-weight: $fontweight-medium;
 
   // クリック可能領域を広げる
   padding: 15px;
@@ -86,7 +86,7 @@
   &.bl_headerNav_link__contact {
     // 文字
     text-align: center;
-    color: v.$color-white;
+    color: $color-white;
 
     // リンクを上下左右中央揃えにする
     height: inherit;
@@ -101,7 +101,7 @@
 
 .bl_headerNav_contact {
   height: inherit;
-  background-color: v.$color-blue1;
+  background-color: $color-blue1;
 }
 
 // ----------------------
@@ -152,7 +152,7 @@
   flex-direction: column;
 
   // 背景色
-  background-color: v.$color-blue1;
+  background-color: $color-blue1;
 
   // 画像エリア以外にいっぱい広げる
   flex: 1;
@@ -161,18 +161,19 @@
   padding: 78px 0 84px 175px;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 .bl_cta_txt {
   // 文字
-  color: v.$color-white;
+  color: $color-white;
   font-size: 1.125rem;
-  @include m.line-height-adjustment(1.666666);
+  @include line-height-adjustment(1.666666);
 }
 
 .bl_cta_time {
   // 文字
-  color: v.$color-white;
+  color: $color-white;
   font-size: 0.875rem;
-  @include m.line-height-adjustment(2.142857);
+  @include line-height-adjustment(2.142857);
 }
 
 // ----------------------
@@ -186,24 +187,25 @@
 //  フッターナビげージョン
 // ----------------------
 .bl_footerNav_link {
-  color: v.$color-white;
+  color: $color-white;
 }
 
 // ----------------------
 //  共通パーツ
 // ----------------------
+/* stylelint-disable-next-line no-descending-specificity */
 .el_btn {
   display: inline-block;
 
   // 文字
   text-decoration: none;
   text-align: center;
-  color: v.$color-white;
-  background-color: v.$color-blue1;
+  color: $color-white;
+  background-color: $color-blue1;
   white-space: nowrap;
 
   // ボーダー
-  border: 1px solid v.$color-white;
+  border: 1px solid $color-white;
   border-radius: 4px;
 
   // サイズ・余白
@@ -214,6 +216,7 @@
 
 // アイコン
 .el_beforeIcon {
+  // 疑似要素
   &::before {
     // 文字との余白
     margin-right: 10px;
@@ -221,8 +224,8 @@
     // アイコン
     display: inline-block;
     content: attr(data-fa);
-    font-family: "Font Awesome 6 Free";
-    font-weight: v.$fontweight-regular;
+    font-family: "Font Awesome 6 Free", sans-serif;
+    font-weight: $fontweight-regular;
     font-size: 1.1rem;
   }
 
@@ -233,7 +236,7 @@
 
   // モディファイア：フォントの太さをblackにする
   &.el_beforeIcon__fwBlack::before {
-    font-weight: v.$fontweight-black;
+    font-weight: $fontweight-black;
   }
 }
 
@@ -242,5 +245,5 @@
 // ----------------------
 // 背景色が青
 .hp_bgBlue {
-  background-color: v.$color-blue1;
+  background-color: $color-blue1;
 }

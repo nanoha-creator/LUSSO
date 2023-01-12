@@ -1,5 +1,4 @@
 {
-  "dartsass.targetDirectory": ".",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
     "source.fixAll.stylelint": true
@@ -8,13 +7,8 @@
   "stylelint.configFile": "./.stylelintrc.js",
   "stylelint.stylelintPath": "node_modules/stylelint",
   "stylelint.validate": ["css", "scss", "postcss"],
-  "autoprefixer.formatOnSave": true,
-  "dartsass.sassBinPath": "node_modules/sass/sass.js",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "emmet.variables": {
     "lang": "ja"
-  },
-  "[php]": {
-    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
   }
 }

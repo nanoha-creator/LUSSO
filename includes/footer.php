@@ -1,6 +1,8 @@
 <div class="bl_footer">
     <div class="bl_footer_left">
-        <a class="el_siteLogo" href="<?php echo esc_url(home_url('/')); ?>"><img src="<?php echo esc_url(get_theme_file_uri('/img/logo_footer.svg')) ?>" alt="LUSSO Automobile"></a>
+        <a class="el_siteLogo" href="<?php echo esc_url(home_url("/")); ?>"><img src="<?php echo esc_url(
+    get_theme_file_uri("/img/logo_footer.svg")
+); ?>" alt="LUSSO Automobile"></a>
 
         <div class="bl_snsLinks">
             <a href="" class="bl_snsLinks_link"><i class="fa-brands fa-facebook"></i></a>
@@ -17,7 +19,8 @@
             <ul class="bl_footerNav_list">
 
                 <li><a class=" bl_footerNav_link" href="#">TOP</a></li>
-                <li><a class=" bl_footerNav_link" href="#">ABOUT</a></li>
+                <li><a class=" bl_footerNav_link" href="#">ABOUT</a>
+                </li>
                 <li><a class=" bl_footerNav_link" href="#">SERVICE</a></li>
                 <li><a class=" bl_footerNav_link" href="#">WORKS</a></li>
                 <li><a class=" bl_footerNav_link" href="#">NEWS</a></li>

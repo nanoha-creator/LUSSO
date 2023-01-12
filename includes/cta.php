@@ -1,6 +1,8 @@
 <div class="bl_cta">
     <figure class="bl_cta_imgWrapper">
-        <img src="<?php echo esc_url(get_theme_file_uri('/img/cta_img.png')) ?>" alt="" width="820" height="446" class="bl_cta_img">
+        <img src="<?php echo esc_url(
+            get_theme_file_uri("/img/cta_img.png")
+        ); ?>" alt="" width="820" height="446" class="bl_cta_img">
     </figure>
     <div class="bl_cta_body">
         <p class="bl_cta_txt">輸入車の購入や修理のご相談など</br>お気軽にお問い合わせください。</p>

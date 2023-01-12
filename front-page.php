@@ -11,7 +11,7 @@
     <header class="ly_header">
 
       <!-- ヘッダー共通パーツ -->
-      <?php get_template_part('includes/header') ?>
+      <?php get_template_part("includes/header"); ?>
 
     </header>
 
@@ -19,13 +19,13 @@
     </main>
 
     <!-- CTA共通パーツ -->
-    <?php get_template_part('includes/cta') ?>
+    <?php get_template_part("includes/cta"); ?>
 
     <footer>
       <div class="ly_footer">
 
         <!-- フッター共通パーツ -->
-        <?php get_template_part('includes/footer') ?>
+        <?php get_template_part("includes/footer"); ?>
 
     </footer>
 

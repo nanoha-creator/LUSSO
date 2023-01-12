@@ -12,7 +12,7 @@
       <div class="ly_header_inner">
 
         <!-- ヘッダー共通パーツ -->
-        <?php get_template_part('includes/header') ?>
+        <?php get_template_part("includes/header"); ?>
 
       </div>
     </header>
@@ -25,7 +25,7 @@
         <div class="ly_footer_inner">
 
           <!-- フッター共通パーツ -->
-          <?php get_template_part('includes/footer') ?>
+          <?php get_template_part("includes/footer"); ?>
 
         </div>
     </footer>
